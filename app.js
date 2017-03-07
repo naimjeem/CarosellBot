@@ -1,7 +1,9 @@
 var Nightmare = require('nightmare');
-//require('nightmare-upload')(Nightmare);
 
-var nightmare = Nightmare({show: true});
+const nightmare = Nightmare({ 
+	show: true,
+	waitTimeout: 100000
+})
 
 new Nightmare()
 	  .goto('https://carousell.com/login/?next=/')
@@ -10,7 +12,7 @@ new Nightmare()
 	  .click('.btn.btn-secondary.btn-block.btn-cta.login-btn')
 	  .wait(3000)
 	  
-	  .inject('css', '/uploads/mouse.css')
+	  //.inject('css', '/uploads/mouse.css')
 	  .goto('https://carousell.com/sell/')
 	  .type('#sellInfoTitle', 'Nice Mouse')
 	  .type('.SellFormCategoryDropdown__dropdownTitle___291uQ', 'Electronics & Gadgets')
@@ -18,11 +20,9 @@ new Nightmare()
 	  .click('.btn.btn-md.btn-secondary')
 
 	  .wait(5000)
-		.screenshot('screenshot.png')
-		  .run(function(err, nightmare) {
-		    if (err) {
-		      console.log(err);
-		    }
-		    console.log('Screenshot captured');
-		    process.exit();
-		  });
+   	  .then(function (result) {
+	  	console.log(result)
+		})
+		.catch(function (error) {
+			console.error('Error:', error);
+		});
