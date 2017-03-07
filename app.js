@@ -10,7 +10,7 @@ new Nightmare()
 	  .click('.btn.btn-secondary.btn-block.btn-cta.login-btn')
 	  .wait(3000)
 	  
-	  .inject('css', 'mouse.css')
+	  .inject('css', '/uploads/mouse.css')
 	  .goto('https://carousell.com/sell/')
 	  .type('#sellInfoTitle', 'Nice Mouse')
 	  .type('.SellFormCategoryDropdown__dropdownTitle___291uQ', 'Electronics & Gadgets')
